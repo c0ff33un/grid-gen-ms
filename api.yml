@@ -1,0 +1,87 @@
+#Test with: http://editor.swagger.io/
+
+swagger: "2.0"
+info:
+  description: "Kotlin + Spring Boot"
+  version: "1.0.0"
+  title: "Grid Generation Micro Service"
+  license:
+    name: "MIT"
+host: "localhost:8080"
+basePath: "/"
+schemes:
+- "http"
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+paths:
+  /grid:
+    get:
+      summary: Returns a generatd grid with given parameters, the same grid will be generated when given equal parameters
+      operationId: grid
+      produces:
+      - "application/json"
+      
+      parameters:
+        
+        - name: height
+          in: "query"
+          description: height of the grid
+          required: false
+          type: integer
+          
+        - name: width
+          in: "query"
+          description: width of the grid
+          required: false
+          type: integer
+        
+        - name: seed
+          in: "query"
+          description: seed to generate the grid
+          required: false
+          type: integer
+        
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/Grid'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+  
+definitions:
+
+  # Users
+  Grid:
+    type: object
+    properties:
+      n:
+        type: integer
+      m:
+        type: integer
+      matrix:
+        type: object
+      exit:
+        type: object
+      
+# Errors
+  ErrorModel:
+    type: object
+    required:
+      - message
+      - code
+    properties:
+      message:
+        type: string
+      code:
+        type: number
+      description:
+        type: object

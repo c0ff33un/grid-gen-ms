@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id("org.springframework.boot") version "2.1.9.RELEASE"
 	id("io.spring.dependency-management") version "1.0.8.RELEASE"
+	id("com.bmuschko.docker-spring-boot-application") version "5.2.0"
 	kotlin("jvm") version "1.2.71"
 	kotlin("plugin.spring") version "1.2.71"
 }

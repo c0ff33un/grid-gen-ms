@@ -20,7 +20,7 @@ class Grid(height: Int, width: Int, seed: Long) {
 
 }
 
-
+/*
 fun main(args: Array<String>) { //Used for testing
 
     val n = 9
@@ -49,3 +49,5 @@ fun main(args: Array<String>) { //Used for testing
     }
 
 }
+
+ */
